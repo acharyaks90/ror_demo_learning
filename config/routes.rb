@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :articles
   get 'home/index'
   get 'home/about'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'login', to: 'session#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :questions
   root to: 'questions#index'
