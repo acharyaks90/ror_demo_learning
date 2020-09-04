@@ -26,8 +26,10 @@ Action
  <%= question.description %>
  </td>
  <td>
+ <% if logged_in? && question.user == current_user %>
  <%= link_to 'Edit', edit_question_path(question) %>
  <%= link_to 'Delete', question, method: :delete %>
+ <% end %>
  </td>
 </tr>
 <% end %>
