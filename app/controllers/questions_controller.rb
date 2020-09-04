@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
      before_action :set_question, only: [:show, :edit, :update, :destroy] 
      before_action :require_user, except: [:show, :index]
+     before_action :require_same_user, only: [:edit, :update, :destroy]
     def index
        
         @questions = Question.all
@@ -51,7 +52,13 @@ class QuestionsController < ApplicationController
     end 
     def question_params
         params.require(:question).permit(:title, :description)
-    end 
+    end
+
+    def require_same_user
+        if current_user != @question.user
+           redirect_to @question
+        end
+    end
 
   
 end
