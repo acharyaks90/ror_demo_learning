@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :users, :except => :new
   get 'signup', to: 'users#new'
   resources :articles
