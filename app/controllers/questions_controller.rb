@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
         @question = Question.find(params[:id])
     end 
     def question_params
-        params.require(:question).permit(:title, :description)
+        params.require(:question).permit(:title, :description, category_ids:[])
     end
 
     def require_same_user
