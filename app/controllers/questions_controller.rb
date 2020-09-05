@@ -55,7 +55,7 @@ class QuestionsController < ApplicationController
     end
 
     def require_same_user
-        if current_user != @question.user
+        if current_user != @question.user && !current_user.admin?
            redirect_to @question
         end
     end
